@@ -1,0 +1,73 @@
+.section {
+  display: grid;
+  gap: 3rem;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-size);
+  margin-inline: auto;
+  padding-inline: 1rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.heading {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.colors {
+  display: flex;
+  gap: 1rem;
+}
+
+.colors .color {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+
+.colors .active {
+  border: 2px solid #000;
+}
+
+.toolbar button {
+  border: none;
+  padding: 1em 2em;
+  border-radius: 100vh;
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  color: var(--color-tertiary);
+  background-color: var(--color-secondary);
+  transition: all 0.3s ease-in-out;
+}
+
+.toolbar button:is(:hover, :focus) {
+  background-color: var(--color-primary);
+}
+
+.toolbar button svg {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.main {
+  display: grid;
+}
+
+@media only screen and (min-width: 1000px) {
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
