@@ -2,44 +2,67 @@
   --color-primary: hsl(194, 28%, 31%);
   --color-secondary: hsl(171, 99%, 35%);
   --color-tertiary: hsl(0, 0%, 100%);
-
-  --container-size: 1200px;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
-  font: inherit;
   box-sizing: border-box;
 }
 
-html:focus-within {
+html {
+  color-scheme: light dark;
   scroll-behavior: smooth;
 }
 
 body {
-  min-height: 100vh;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--color-primary);
-  line-height: 1.1;
-  font-weight: 600;
+  --fs-body: 1.125rem;
+  font-size: var(--fs-body);
+  font-family: system-ui;
+  line-height: 1.6;
 }
 
 img,
-svg,
-video {
+svg {
   display: block;
-  width: 100%;
+  max-width: 100%;
+}
+
+main {
+  width: min(1200px, 100% - 2rem);
+  margin-inline: auto;
 }
 
 button,
-select {
+.button {
   cursor: pointer;
+  font-size: var(--fs-body, 1.125rem);
+  outline-color: transparent;
+  border-color: transparent;
+  text-decoration: none;
+}
+
+.button {
+  padding: 0.6em 2em;
+  border: 1px solid black;
+}
+
+.button--primary {
+  color: white;
+  background-color: black;
+}
+
+.button--secondary {
+  color: black;
+  background-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  button,
+  .button {
+    outline-color: white;
+    border-color: white;
+  }
 }

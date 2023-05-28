@@ -1,15 +1,17 @@
-import Header from "./components/Header/Header";
-import Body from "./components/Body/Body";
+import Hero from "./components/Hero/Hero"
+import Editor from "./components/Editor/Editor"
 
-import "./App.css";
+import "./App.css"
 
 function App() {
   return (
     <>
-      <Header />
-      <Body />
+      <main>
+        <Hero />
+        <Editor />
+      </main>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

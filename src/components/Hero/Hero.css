@@ -1,0 +1,65 @@
+section[aria-labelledby="Hero Section"] {
+  display: grid;
+  gap: 1rem;
+  min-height: 100vh;
+}
+
+section[aria-labelledby="Hero Section"] .text-box {
+  display: grid;
+  gap: 1rem;
+  order: 2;
+  text-align: center;
+}
+
+section[aria-labelledby="Hero Section"] h1 {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+section[aria-labelledby="Hero Section"] .image-box {
+  display: grid;
+  place-content: center;
+  order: 1;
+}
+
+@media only screen and (min-width: 425px) {
+  section[aria-labelledby="Hero Section"] .text-box {
+    place-items: center;
+  }
+
+  section[aria-labelledby="Hero Section"] button {
+    max-width: fit-content;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  section[aria-labelledby="Hero Section"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  section[aria-labelledby="Hero Section"] .text-box {
+    order: 1;
+    gap: 1.4rem;
+    text-align: left;
+    justify-items: start;
+    align-content: center;
+  }
+
+  section[aria-labelledby="Hero Section"] h1 {
+    font-size: 3rem;
+  }
+
+  section[aria-labelledby="Hero Section"] .image-box {
+    order: 2;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  section[aria-labelledby="Hero Section"] .text-box {
+    max-width: 56ch;
+  }
+
+  section[aria-labelledby="Hero Section"] h1 {
+    font-size: 4rem;
+  }
+}
