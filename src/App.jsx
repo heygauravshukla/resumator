@@ -1,17 +1,19 @@
-import Hero from "./components/Hero/Hero"
-import Editor from "./components/Editor/Editor"
+import Hero from "./components/Hero/Hero";
+import Editor from "./components/Editor/Editor";
 
-import "./App.css"
+import { Container, CssBaseline } from "@mui/material";
+import "./App.css";
 
 function App() {
   return (
     <>
-      <main>
+      <CssBaseline />
+      <Container>
         <Hero />
         <Editor />
-      </main>
+      </Container>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

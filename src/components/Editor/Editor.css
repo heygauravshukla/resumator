@@ -28,8 +28,8 @@ section[aria-labelledby="Editor"] .toolbar {
   border-radius: 50%;
 }
 
-.color-button.active-color {
-  border: 2px solid #000;
+.active-color svg{
+  color: white;
 }
 
 section[aria-labelledby="Editor"] .wrapper {

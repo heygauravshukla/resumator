@@ -1,13 +1,16 @@
-import React, { useRef, useState } from "react"
-import ReactToPrint from "react-to-print"
+import { useRef, useState } from "react";
+import ReactToPrint from "react-to-print";
 
-import UserInfo from "../UserInfo/UserInfo"
-import Resume from "../Resume/Resume"
+import UserInfo from "../UserInfo/UserInfo";
+import Resume from "../Resume/Resume";
 
-import "./Editor.css"
+import { Button, IconButton } from "@mui/material";
+import DownloadIcon from "@mui/icons-material/Download";
+import PaletteIcon from "@mui/icons-material/Palette";
+import "./Editor.css";
 
 function Editor() {
-  const colors = ["#395b65", "#01b297", "#0bc5ea", "#a0aec0", "#ed8936"]
+  const colors = ["#395b65", "#01b297", "#0bc5ea", "#a0aec0", "#ed8936"];
   const sections = {
     basicInfo: "Basic Info",
     workExp: "Work Experience",
@@ -16,10 +19,10 @@ function Editor() {
     achievement: "Achievements",
     summary: "Summary",
     other: "Other",
-  }
-  const resumeRef = useRef()
+  };
+  const resumeRef = useRef();
 
-  const [activeColor, setActiveColor] = useState(colors[0])
+  const [activeColor, setActiveColor] = useState(colors[0]);
   const [resumeInformation, setResumeInformation] = useState({
     [sections.basicInfo]: {
       id: sections.basicInfo,
@@ -56,7 +59,7 @@ function Editor() {
       sectionTitle: sections.other,
       detail: "",
     },
-  })
+  });
 
   return (
     <section id="editor" aria-labelledby="Editor">
@@ -64,19 +67,29 @@ function Editor() {
       <div className="toolbar">
         <div className="colors-wrapper">
           {colors.map((item) => (
-            <button
+            <IconButton
+              aria-label="color-palette"
               key={item}
               style={{ backgroundColor: item }}
-              className={`color-button ${
-                activeColor === item ? `active-color` : ""
-              }`}
+              className={activeColor === item ? `active-color` : ""}
               onClick={() => setActiveColor(item)}
-            ></button>
+            >
+              <PaletteIcon />
+            </IconButton>
           ))}
         </div>
         <ReactToPrint
           trigger={() => {
-            return <button className="button button--primary">Download</button>
+            return (
+              <Button
+                color="success"
+                variant="contained"
+                size="medium"
+                startIcon={<DownloadIcon />}
+              >
+                Download
+              </Button>
+            );
           }}
           content={() => resumeRef.current}
         />
@@ -95,7 +108,7 @@ function Editor() {
         />
       </div>
     </section>
-  )
+  );
 }
 
-export default Editor
+export default Editor;

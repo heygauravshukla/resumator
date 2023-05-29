@@ -1,4 +1,6 @@
-import "./Hero.css"
+import { Button } from "@mui/material";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import "./Hero.css";
 
 const Hero = () => {
   return (
@@ -10,15 +12,20 @@ const Hero = () => {
           count! Our Resume Builder empowers you to create visually appealing
           resumes that grab attention and highlight your strengths.
         </p>
-        <a className="button button--primary" href="#editor">
+        <Button
+          href="#editor"
+          variant="contained"
+          size="large"
+          endIcon={<KeyboardArrowRightIcon />}
+        >
           Get Started
-        </a>
+        </Button>
       </div>
       <div className="image-box">
         <img src="./resume.jpg" alt="Resume Image" />
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

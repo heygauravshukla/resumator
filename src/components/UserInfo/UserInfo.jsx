@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from "react"
-import { X } from "react-feather"
+import React, { useEffect, useState } from "react";
+import { X } from "react-feather";
 
-import InputControl from "../InputControl/InputControl"
+import InputControl from "../InputControl/InputControl";
 
-import "./UserInfo.css"
+import { Button } from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save";
+import "./UserInfo.css";
 
 function UserInfo(props) {
-  const sections = props.sections
-  const information = props.information
+  const sections = props.sections;
+  const information = props.information;
 
   const [activeSectionKey, setActiveSectionKey] = useState(
     Object.keys(sections)[0]
-  )
+  );
   const [activeInformation, setActiveInformation] = useState(
     information[sections[Object.keys(sections)[0]]]
-  )
-  const [activeDetailIndex, setActiveDetailIndex] = useState(0)
+  );
+  const [activeDetailIndex, setActiveDetailIndex] = useState(0);
   const [sectionTitle, setSectionTitle] = useState(
     sections[Object.keys(sections)[0]]
-  )
+  );
   const [values, setValues] = useState({
     name: activeInformation?.detail?.name || "",
     title: activeInformation?.detail?.title || "",
@@ -26,14 +28,14 @@ function UserInfo(props) {
     github: activeInformation?.detail?.github || "",
     phone: activeInformation?.detail?.phone || "",
     email: activeInformation?.detail?.email || "",
-  })
+  });
 
   const handlePointUpdate = (value, index) => {
-    const tempValues = { ...values }
-    if (!Array.isArray(tempValues.points)) tempValues.points = []
-    tempValues.points[index] = value
-    setValues(tempValues)
-  }
+    const tempValues = { ...values };
+    if (!Array.isArray(tempValues.points)) tempValues.points = [];
+    tempValues.points[index] = value;
+    setValues(tempValues);
+  };
 
   const workExpBody = (
     <div className="detail">
@@ -116,7 +118,7 @@ function UserInfo(props) {
         />
       </div>
     </div>
-  )
+  );
   const projectBody = (
     <div className="detail">
       <div className="row">
@@ -179,7 +181,7 @@ function UserInfo(props) {
         />
       </div>
     </div>
-  )
+  );
   const educationBody = (
     <div className="detail">
       <div className="row">
@@ -221,7 +223,7 @@ function UserInfo(props) {
         />
       </div>
     </div>
-  )
+  );
   const basicInfoBody = (
     <div className="detail">
       <div className="row">
@@ -279,7 +281,7 @@ function UserInfo(props) {
         />
       </div>
     </div>
-  )
+  );
   const achievementsBody = (
     <div className="detail">
       <div className="column">
@@ -306,7 +308,7 @@ function UserInfo(props) {
         />
       </div>
     </div>
-  )
+  );
   const summaryBody = (
     <div className="detail">
       <InputControl
@@ -318,7 +320,7 @@ function UserInfo(props) {
         }
       />
     </div>
-  )
+  );
   const otherBody = (
     <div className="detail">
       <InputControl
@@ -330,28 +332,28 @@ function UserInfo(props) {
         }
       />
     </div>
-  )
+  );
 
   const generateBody = () => {
     switch (sections[activeSectionKey]) {
       case sections.basicInfo:
-        return basicInfoBody
+        return basicInfoBody;
       case sections.workExp:
-        return workExpBody
+        return workExpBody;
       case sections.project:
-        return projectBody
+        return projectBody;
       case sections.education:
-        return educationBody
+        return educationBody;
       case sections.achievement:
-        return achievementsBody
+        return achievementsBody;
       case sections.summary:
-        return summaryBody
+        return summaryBody;
       case sections.other:
-        return otherBody
+        return otherBody;
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   const handleSubmission = () => {
     switch (sections[activeSectionKey]) {
@@ -363,7 +365,7 @@ function UserInfo(props) {
           github: values.github,
           email: values.email,
           phone: values.phone,
-        }
+        };
 
         props.setInformation((prev) => ({
           ...prev,
@@ -372,8 +374,8 @@ function UserInfo(props) {
             detail: tempDetail,
             sectionTitle,
           },
-        }))
-        break
+        }));
+        break;
       }
       case sections.workExp: {
         const tempDetail = {
@@ -384,9 +386,9 @@ function UserInfo(props) {
           companyName: values.companyName,
           location: values.location,
           points: values.points,
-        }
-        const tempDetails = [...information[sections.workExp]?.details]
-        tempDetails[activeDetailIndex] = tempDetail
+        };
+        const tempDetails = [...information[sections.workExp]?.details];
+        tempDetails[activeDetailIndex] = tempDetail;
 
         props.setInformation((prev) => ({
           ...prev,
@@ -395,8 +397,8 @@ function UserInfo(props) {
             details: tempDetails,
             sectionTitle,
           },
-        }))
-        break
+        }));
+        break;
       }
       case sections.project: {
         const tempDetail = {
@@ -405,9 +407,9 @@ function UserInfo(props) {
           overview: values.overview,
           github: values.github,
           points: values.points,
-        }
-        const tempDetails = [...information[sections.project]?.details]
-        tempDetails[activeDetailIndex] = tempDetail
+        };
+        const tempDetails = [...information[sections.project]?.details];
+        tempDetails[activeDetailIndex] = tempDetail;
 
         props.setInformation((prev) => ({
           ...prev,
@@ -416,8 +418,8 @@ function UserInfo(props) {
             details: tempDetails,
             sectionTitle,
           },
-        }))
-        break
+        }));
+        break;
       }
       case sections.education: {
         const tempDetail = {
@@ -425,9 +427,9 @@ function UserInfo(props) {
           college: values.college,
           startDate: values.startDate,
           endDate: values.endDate,
-        }
-        const tempDetails = [...information[sections.education]?.details]
-        tempDetails[activeDetailIndex] = tempDetail
+        };
+        const tempDetails = [...information[sections.education]?.details];
+        tempDetails[activeDetailIndex] = tempDetail;
 
         props.setInformation((prev) => ({
           ...prev,
@@ -436,11 +438,11 @@ function UserInfo(props) {
             details: tempDetails,
             sectionTitle,
           },
-        }))
-        break
+        }));
+        break;
       }
       case sections.achievement: {
-        const tempPoints = values.points
+        const tempPoints = values.points;
 
         props.setInformation((prev) => ({
           ...prev,
@@ -449,11 +451,11 @@ function UserInfo(props) {
             points: tempPoints,
             sectionTitle,
           },
-        }))
-        break
+        }));
+        break;
       }
       case sections.summary: {
-        const tempDetail = values.summary
+        const tempDetail = values.summary;
 
         props.setInformation((prev) => ({
           ...prev,
@@ -462,11 +464,11 @@ function UserInfo(props) {
             detail: tempDetail,
             sectionTitle,
           },
-        }))
-        break
+        }));
+        break;
       }
       case sections.other: {
-        const tempDetail = values.other
+        const tempDetail = values.other;
 
         props.setInformation((prev) => ({
           ...prev,
@@ -475,18 +477,18 @@ function UserInfo(props) {
             detail: tempDetail,
             sectionTitle,
           },
-        }))
-        break
+        }));
+        break;
       }
     }
-  }
+  };
 
   const handleAddNew = () => {
-    const details = activeInformation?.details
-    if (!details) return
-    const lastDetail = details.slice(-1)[0]
-    if (!Object.keys(lastDetail).length) return
-    details?.push({})
+    const details = activeInformation?.details;
+    if (!details) return;
+    const lastDetail = details.slice(-1)[0];
+    if (!Object.keys(lastDetail).length) return;
+    details?.push({});
 
     props.setInformation((prev) => ({
       ...prev,
@@ -494,32 +496,32 @@ function UserInfo(props) {
         ...information[sections[activeSectionKey]],
         details: details,
       },
-    }))
-    setActiveDetailIndex(details?.length - 1)
-  }
+    }));
+    setActiveDetailIndex(details?.length - 1);
+  };
 
   const handleDeleteDetail = (index) => {
     const details = activeInformation?.details
       ? [...activeInformation?.details]
-      : ""
-    if (!details) return
-    details.splice(index, 1)
+      : "";
+    if (!details) return;
+    details.splice(index, 1);
     props.setInformation((prev) => ({
       ...prev,
       [sections[activeSectionKey]]: {
         ...information[sections[activeSectionKey]],
         details: details,
       },
-    }))
+    }));
 
-    setActiveDetailIndex((prev) => (prev === index ? 0 : prev - 1))
-  }
+    setActiveDetailIndex((prev) => (prev === index ? 0 : prev - 1));
+  };
 
   useEffect(() => {
-    const activeInfo = information[sections[activeSectionKey]]
-    setActiveInformation(activeInfo)
-    setSectionTitle(sections[activeSectionKey])
-    setActiveDetailIndex(0)
+    const activeInfo = information[sections[activeSectionKey]];
+    setActiveInformation(activeInfo);
+    setSectionTitle(sections[activeSectionKey]);
+    setActiveDetailIndex(0);
     setValues({
       name: activeInfo?.detail?.name || "",
       overview: activeInfo?.details
@@ -558,18 +560,18 @@ function UserInfo(props) {
       email: activeInfo?.detail?.email || "",
       summary: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
       other: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
-    })
-  }, [activeSectionKey])
+    });
+  }, [activeSectionKey]);
 
   useEffect(() => {
-    setActiveInformation(information[sections[activeSectionKey]])
-  }, [information])
+    setActiveInformation(information[sections[activeSectionKey]]);
+  }, [information]);
 
   useEffect(() => {
-    const details = activeInformation?.details
-    if (!details) return
+    const details = activeInformation?.details;
+    if (!details) return;
 
-    const activeInfo = information[sections[activeSectionKey]]
+    const activeInfo = information[sections[activeSectionKey]];
     setValues({
       overview: activeInfo.details[activeDetailIndex]?.overview || "",
       link: activeInfo.details[activeDetailIndex]?.link || "",
@@ -584,8 +586,8 @@ function UserInfo(props) {
       linkedin: activeInfo.details[activeDetailIndex]?.linkedin || "",
       github: activeInfo.details[activeDetailIndex]?.github || "",
       college: activeInfo.details[activeDetailIndex]?.college || "",
-    })
-  }, [activeDetailIndex])
+    });
+  }, [activeDetailIndex]);
 
   return (
     <div className="form-wrapper">
@@ -624,8 +626,8 @@ function UserInfo(props) {
                   </p>
                   <X
                     onClick={(event) => {
-                      event.stopPropagation()
-                      handleDeleteDetail(index)
+                      event.stopPropagation();
+                      handleDeleteDetail(index);
                     }}
                   />
                 </button>
@@ -643,12 +645,16 @@ function UserInfo(props) {
 
         {generateBody()}
 
-        <button className="button" onClick={handleSubmission}>
+        <Button
+          variant="contained"
+          startIcon={<SaveIcon />}
+          onClick={handleSubmission}
+        >
           Save
-        </button>
+        </Button>
       </div>
     </div>
-  )
+  );
 }
 
-export default UserInfo
+export default UserInfo;
